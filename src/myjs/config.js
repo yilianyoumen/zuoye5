@@ -1,0 +1,96 @@
+/*?*
+ * Created by zhangying on 2017/4/25.
+ */
+angular.module("myapp")
+        .config(function($stateProvider,$urlRouterProvider){
+        $urlRouterProvider.otherwise("/home")
+        $stateProvider
+            .state({
+                name:"home",
+                url:"/home",
+                templateUrl:"./views/home.html",
+                controller:function(){
+                    $(".lis2").on("click","li",function(){
+                        $(this).find("a").css({"color":"#01b0b9","border-color":"#01b0b9"})
+                        $(this).siblings("li").find("a").css({"color":"#000"})
+                        //$(this).find("span:after").css({"border-color":"#01b0b9"})
+
+                    })
+                }
+            })
+            .state({
+                name:"home.home1",
+                url:"/home1",
+                templateUrl:"./views/home1.html",
+                controller:function(){
+                    $(".cols").on("click","li",function(){
+                        $(this).find("a").css({"color":"#333"}).end().siblings().find("a").css({"color":"#ccc"})
+                        $(this).addClass("bgs")
+                    })
+                }
+            })
+            .state({
+                name:"home.home1.introduce",
+                url:"/introduce",
+                templateUrl:"./views/introduce.html",
+                controller:function($scope,json){
+                    $scope.data = json.data
+                    $("#send").on("click",function(){
+                       if($("#txt").val()==""){
+                           alert("请输入发表内容！")
+                       }else{
+                           var val = $("#txt").val()
+                           var dates = new Date()
+                           console.log(val)
+                           var str = "<li><span class='lf'>李大爷："+val+"</span><span class = 'rh'>"+"2017年4月27日 02:00回复</span></li>"
+                           $(".lis").append(str)
+                       }
+                    })
+                },
+                resolve:{
+                    json:function($http){
+                        return $http.get("./data/package.json")
+                    }
+                }
+            })
+            .state({
+                name:"home.introduce1",
+                url:"/introduce1",
+                template:"首页"
+            })
+            .state({
+                name:"home.introduce2",
+                url:"/introduce2",
+                template:"党组织活动服务"
+            })
+            .state({
+                name:"home.introduce3",
+                url:"/introduce3",
+                template:"居民自治活动服务"
+            })
+            .state({
+                name:"home.home1.look",
+                url:"/look",
+                templateUrl:"./views/look.html"
+            })
+            .state({
+                name:"home.home1.summary",
+                url:"/summary",
+                templateUrl:"./views/summary.html"
+            })
+            .state({
+                name:"home.home1.detail1",
+                url:"detail1",
+                templateUrl:"./views/detail1.html"
+            })
+            .state({
+                name:"home.home1.detail2",
+                url:"detail2",
+                templateUrl:"./views/detail2.html"
+            })
+            .state({
+                name:"home.home1.detail3",
+                url:"detail3",
+                templateUrl:"./views/detail3.html"
+            })
+    })

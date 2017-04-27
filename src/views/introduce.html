@@ -1,0 +1,23 @@
+<div class="container">
+    <div  class="col-md-12 col-lg-12">
+        <h3 class = "basic">基本信息</h3>
+        <p>负责人：张鑫 13023948374</p>
+        <p>责任人单位：南风里居委会</p>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <h3 class = "basic">请输入栏目名称</h3>
+        <my-file></my-file>
+    </div>
+    <div  class="col-md-12 col-lg-12">
+        <h3 class = "basic">评论区</h3>
+        <ul class = "lis">
+            <li ng-repeat = "i in data"><span class="lf">{{i.title}}</span><span class = "rh">{{i.time}}{{i.back}}</span></li>
+        </ul>
+        <textarea class="form-control" rows="3" id="txt"></textarea>
+    </div>
+    <div class="col-md-12 col-lg-12 btns">
+        <button type="button" class="btn btn-info btn" id = "send">发送</button>
+    </div>
+</div>
+</div>
+
